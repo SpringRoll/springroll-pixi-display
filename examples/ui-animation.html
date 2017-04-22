@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Key Combinations Example</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="assets/css/main.css">
+
+		<!-- Examples dependencies, these are only necessary for examples -->
+		<link rel="stylesheet" href="../components/google-code-prettify/bin/prettify.min.css">
+		<script src="../components/google-code-prettify/bin/prettify.min.js"></script>
+		<script src="../components/google-code-prettify/bin/run_prettify.min.js"></script>
+		<script src="assets/js/examples.js"></script>
+
+		<!-- External dependencies -->
+		<script src="../components/tweenjs/lib/tweenjs.min.js"></script>
+		<script src="../components/pixi.js/bin/pixi.min.js"></script>
+		<script src="../components/preloadjs/lib/preloadjs.min.js"></script>
+
+		<!-- SpringRoll and modules -->
+		<script src="../components/springroll/dist/core.js"></script>
+		<script src="../components/springroll/dist/modules/debug.js"></script>
+		<script src="../components/springroll/dist/modules/ui.js"></script>
+		<script src="../components/springroll/dist/modules/animation.js"></script>
+		
+		<!-- Library -->
+		<script src="../dist/pixi-display.js"></script>
+		<script src="../dist/modules/pixi-ui.js"></script>
+		<script src="../dist/modules/pixi-animation.js"></script>
+
+	</head>
+	<body class="fullscreen">
+		<div id="content" class="canvas">
+			<nav>
+				<button id="canvas">Application</button>
+				<button id="code">Code</button>
+				<button id="back">Back</button>
+			</nav>
+			<div id="framerate">FPS: 00.000</div>
+			<div id="stageContainer">
+				<canvas id="stage" width="800" height="500"></canvas>
+			</div>
+			<pre id="codeDisplay"></pre>
+<script>
+
+var Application = include('springroll.Application'),
+	Button = include('springroll.pixi.Button'),
+	PixiDisplay = include('springroll.PixiDisplay');
+
+// Create the new application
+var app = new Application({
+	resizeElement : "stageContainer",
+	framerate: "framerate",
+	canvasId: "stage",
+	configPath: "assets/config/config-ui-animation.json",
+	display: PixiDisplay,
+	displayOptions: {
+		clearView: true // clear the stage on render
+	},
+	preload: [
+		{
+			id: 'flowerAnim',
+			anim: "assets/images/FlowerData.json",
+			atlas: "assets/images/FlowerSheet.json",
+			image: "assets/images/FlowerSheet.png",
+			type: "pixi"
+		},
+		{
+			id: "button",
+			image: "assets/images/button.png",
+			atlas: "assets/images/button.json",
+			type: "pixi"
+		}
+	]
+});
+
+var images = {};
+
+// Wait until the app is ready
+app.on('init', function()
+{
+	var stage = this.display.stage;
+	
+	this.flower = this.getCache("flowerAnim");
+	
+	this.animator.play(this.flower, "dry");
+	
+	//create a button for animation playing
+	var spritesheet = this.getCache('button');
+	this.playButton = new Button({
+		up: spritesheet.frames["button_up"],
+		down: spritesheet.frames["button_down"],
+		over: spritesheet.frames["button_over"]
+	}, {
+		text: 'Play',
+		style: {
+			font: "16px Arial",
+			fill: "#ffffff"
+		}
+	});
+	
+	this.playButton.on(Button.BUTTON_PRESS, playAnim);
+	
+	stage.addChild(this.flower, this.playButton);
+});
+
+function playAnim()
+{
+	app.animator.play(app.flower, "wet", resetAnim);
+}
+
+function resetAnim()
+{
+	app.animator.play(app.flower, "dry");
+}
+
+</script>
+		</div>
+	</body>
+</html>

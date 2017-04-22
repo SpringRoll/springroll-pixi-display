@@ -1,0 +1,54 @@
+{
+	"name": "SpringRoll Pixi Display",
+	"version": "3.0.0",
+	"description": "A SpringRoll display plugin using PixiJS",
+	"url": "https://github.com/SpringRoll/springroll-pixi-display",
+	"output": "pixi-display",
+	"main": [
+		"src/mixins/*.js",
+		"src/display/TextureTask.js",
+		"src/display/TextureAtlas.js",
+		"src/display/TextureAtlasTask.js",
+		"src/display/BitmapFontTask.js",
+		"src/display/PixiDisplayPlugin.js",
+		"src/DisplayAdapter.js",
+		"src/PixiDisplay.js",
+		"src/TickerPlugin.js",
+		"src/deprecation/pixi-display.js"
+	],
+	"modules":
+	{
+		"pixianimation":
+		{
+			"output": "pixi-animation",
+			"main": [
+				"src/animation/AnimationPlugin.js",
+				"src/animation/AdvancedMovieClip.js",
+				"src/animation/AdvancedMovieClipInstance.js",
+				"src/animation/AdvancedMovieClipTask.js",
+				"src/deprecation/pixi-animation.js"
+			]
+		},
+		"pixispine":
+		{
+			"output": "pixi-spine",
+			"main": [
+				"src/spine/SpinePlugin.js",
+				"src/spine/ParallelSpineData.js",
+				"src/spine/SpineInstance.js",
+				"src/spine/SpineAtlas.js",
+				"src/spine/SpineAtlasTask.js",
+				"src/spine/SpineAnimTask.js"
+			]
+		},
+		"pixiui":
+		{
+			"output": "pixi-ui",
+			"main": [
+				"src/ui/Button.js",
+				"src/ui/DragData.js",
+				"src/ui/DragManager.js"
+			]
+		}
+	}
+}
