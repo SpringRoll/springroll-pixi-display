@@ -1,6 +1,6 @@
 {
 	"name": "SpringRoll Pixi Display",
-	"version": "3.0.0",
+	"version": "4.0.0",
 	"description": "A SpringRoll display plugin using PixiJS",
 	"url": "https://github.com/SpringRoll/springroll-pixi-display",
 	"output": "pixi-display",

@@ -87,14 +87,9 @@
 				data,
 				this.cache && !ignoreCacheSetting
 			);
-			//if the spritesheet JSON had a scale in it, use that to override
-			//whatever settings came from loading, as the texture atlas size is more important
-			if (data.meta && data.meta.scale && parseFloat(data.meta.scale) != 1)
-			{
-				texture.baseTexture.resolution = parseFloat(results._atlas.meta.scale);
-				texture.baseTexture.update();
-			}
-			done(atlas, results);
+			atlas.parse(function() {
+				done(atlas, results);
+			});
 		}.bind(this), true);
 	};
 

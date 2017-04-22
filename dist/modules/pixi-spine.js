@@ -1,4 +1,4 @@
-/*! SpringRoll Pixi Display 1.0.0 */
+/*! SpringRoll Pixi Display 4.0.0 */
 /**
  * @module PIXI Spine
  * @namespace springroll
