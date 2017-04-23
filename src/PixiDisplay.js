@@ -38,6 +38,8 @@
 	 *                                                        context.
 	 * @param {Boolean} [options.autoPreventDefault=true] If preventDefault() should be called on
 	 *                                                    all touch events and mousedown events.
+	 * @param {Boolean} [options.legacy=false] If WebGL's 'legacy' rendering options should be
+	 *                                         enabled.
 	 */
 	var PixiDisplay = function(id, options)
 	{
@@ -87,7 +89,8 @@
 			clearBeforeRender: !!options.clearView,
 			backgroundColor: options.backgroundColor || 0,
 			//this defaults to false, but we never want it to auto resize.
-			autoResize: false
+			autoResize: false,
+			legacy: !!options.legacy
 		};
 		var preMultAlpha = !!options.preMultAlpha;
 		if (rendererOptions.transparent && !preMultAlpha)
