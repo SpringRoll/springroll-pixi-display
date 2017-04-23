@@ -18,6 +18,8 @@
 	var orig_destroy = p.destroy;
 	p.destroy = function()
 	{
+		if (this._destroyed) return;
+
 		orig_destroy.call(this);
 
 		//go through and destroy any textures that use this as the base texture

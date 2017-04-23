@@ -150,8 +150,9 @@
 				texture.__T_destroy = texture.destroy;
 				texture.destroy = function()
 				{
+					this.destroy = this.__T_destroy;
 					//destroy the base texture as well
-					this.__T_destroy(true);
+					this.destroy(true);
 				};
 			}
 			if (this.uploadToGPU)

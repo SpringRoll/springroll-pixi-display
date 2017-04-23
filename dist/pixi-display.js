@@ -19,6 +19,8 @@
 	var orig_destroy = p.destroy;
 	p.destroy = function()
 	{
+		if (this._destroyed) return;
+
 		orig_destroy.call(this);
 
 		//go through and destroy any textures that use this as the base texture
@@ -783,8 +785,9 @@
 				texture.__T_destroy = texture.destroy;
 				texture.destroy = function()
 				{
+					this.destroy = this.__T_destroy;
 					//destroy the base texture as well
-					this.__T_destroy(true);
+					this.destroy(true);
 				};
 			}
 			if (this.uploadToGPU)
