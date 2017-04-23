@@ -4,7 +4,8 @@
 	"main": "dist/pixi-display.min.js",
 	"dependencies": {
 		"grunt": "~0.4.5",
-		"library-grunt": "~0.6.0"
+		"library-grunt": "~0.6.0",
+		"pixi.js": "^4.5.1"
 	},
 	"repository": {
 		"type": "git",

@@ -3,8 +3,7 @@
 	"version": "4.0.0",
 	"main": "dist/pixi-display.min.js",
 	"dependencies": {
-		"springroll": "^1.0.0",
-		"pixi.js": "~4.4.4"
+		"springroll": "^1.0.0"
 	},
 	"devDependencies": {
 		"tweenjs": "https://github.com/SpringRoll/TweenJS.git",
