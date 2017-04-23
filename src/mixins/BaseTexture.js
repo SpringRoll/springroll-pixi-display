@@ -22,22 +22,24 @@
 
 		orig_destroy.call(this);
 
-		//go through and destroy any textures that use this as the base texture
-		//that way a destroyed spritesheet cleans up all the sprite frames
-		var TextureCache = PIXI.utils.TextureCache;
-		for(var id in TextureCache)
-		{
-			var texture = TextureCache[id];
-			if(!texture)
+		setTimeout(function() {
+			//go through and destroy any textures that use this as the base texture
+			//that way a destroyed spritesheet cleans up all the sprite frames
+			var TextureCache = PIXI.utils.TextureCache;
+			for(var id in TextureCache)
 			{
-				delete TextureCache[id];
-				continue;
+				var texture = TextureCache[id];
+				if(!texture)
+				{
+					delete TextureCache[id];
+					continue;
+				}
+				if(texture.baseTexture === this)
+				{
+					texture.destroy();
+				}
 			}
-			if(texture.baseTexture === this)
-			{
-				texture.destroy();
-			}
-		}
+		}, 0);
 	};
 
 }());
