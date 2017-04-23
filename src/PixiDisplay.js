@@ -10,7 +10,8 @@
 		Container = include('PIXI.Container'),
 		CanvasRenderer = include('PIXI.CanvasRenderer'),
 		WebGLRenderer = include('PIXI.WebGLRenderer'),
-		autoDetectRenderer = include('PIXI.autoDetectRenderer');
+		autoDetectRenderer = include('PIXI.autoDetectRenderer'),
+		enableLegacy = include('springroll.pixi.enableLegacy');
 
 	/**
 	 * PixiDisplay is a display plugin for the springroll Framework
@@ -130,6 +131,11 @@
 
 		// Initialize the autoPreventDefault
 		this.autoPreventDefault = this._autoPreventDefault;
+
+		if (options.legacy)
+		{
+			enableLegacy(this.renderer);
+		}
 	};
 
 	var s = AbstractDisplay.prototype;

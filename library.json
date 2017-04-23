@@ -6,6 +6,7 @@
 	"output": "pixi-display",
 	"main": [
 		"src/mixins/*.js",
+		"src/legacy/enableLegacy.js",
 		"src/display/TextureTask.js",
 		"src/display/TextureAtlas.js",
 		"src/display/TextureAtlasTask.js",
