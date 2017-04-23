@@ -863,6 +863,7 @@
 			//copy over the textures into our array
 			for (var name in textures)
 			{
+				var origName = name;
 				var texture = textures[name];
 				var index = name.lastIndexOf(".");
 				//strip off any ".png" or ".jpg" at the end
@@ -873,6 +874,11 @@
 				if (index >= 0)
 					name = name.substring(index + 1);
 				this.frames[name] = texture;
+				if (origName != name)
+				{
+					//add to cache under changed name
+					Texture.addToCache(texture, name);
+				}
 			}
 			callback();
 		}.bind(this));
